@@ -1,23 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import TipCalculator from './components/TipCalculator'
+
+import logo from './assets/images/logo.svg'
 
 function App() {
+
+  const tipOptions = [5,10,15,25,50]
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <div className="app__logo">
+        <img src={logo} alt="application logo" />
+      </div>
+      <main>
+        <TipCalculator tipOptions={tipOptions} customTip={true}  />
+      </main>
     </div>
   );
 }
