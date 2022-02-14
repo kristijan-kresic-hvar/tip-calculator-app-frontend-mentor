@@ -12,17 +12,18 @@ import iconDollar from '../../assets/images/icon-dollar.svg'
 function TipCalculator(props) {
 
   const [billAmount, setBillAmount] = useState(0)
-  const [tipPercentage, setTipPercentage] = useState(0)
-  const [numberOfGuests, setNumberOfGuests] = useState(0)
+  const [tipPercentage, setTipPercentage] = useState("")
+  const [numberOfGuests, setNumberOfGuests] = useState("")
   const [error, setError] = useState({
       message: ""
   })
 
-  const tips = props.tipOptions?.map(tip => <Tip key={tip} tip={tip} />)
+  const tips = props.tipOptions?.map(tip => <Tip key={tip} tip={tip} tipPercentage={tipPercentage} setTipPercentage={setTipPercentage} />)
 
+  // check if number of guests input is 0 and if it is set error and its message
   useEffect(() => {
 
-    if(!Number(numberOfGuests) > 0) {
+    if(numberOfGuests !== "" && !Number(numberOfGuests) > 0) {
       setError({ message: "Can't be zero" })
     } else {
       setError({ message: "" })
@@ -30,12 +31,21 @@ function TipCalculator(props) {
   
   },[numberOfGuests])
 
+  // function to run when bill input changes
   const handleBillChange = (value) => {
-    setBillAmount(value || "")
+    setBillAmount(value || 0)
   }
 
+  // function to run when number of guests input changes
   const handleGuestsChange = (value) => {
-    setNumberOfGuests(value || "")
+    setNumberOfGuests(value || 0)
+  }
+
+  // used for reset button
+  const resetState = () => {
+    setBillAmount(0)
+    setTipPercentage("")
+    setNumberOfGuests("")
   }
 
   return (
@@ -46,7 +56,8 @@ function TipCalculator(props) {
           name="bill"
           icon={iconDollar} 
           type="number" 
-          label="Bill" 
+          label="Bill"
+          decimals={2}
           placeholder="0"
           value={billAmount}
           handleChange={handleBillChange}
@@ -55,7 +66,7 @@ function TipCalculator(props) {
           <h3>Select Tip %</h3>
           <div className="tips">
             {tips}
-            {props.customTip && <Tip custom={true} />}
+            {props.customTip && <Tip custom={true} value={tipPercentage} tipPercentage={tipPercentage} setTipPercentage={setTipPercentage}/>}
           </div>
         </StyledTipContainer>}
         <Input 
@@ -66,11 +77,17 @@ function TipCalculator(props) {
           label="Number of People" 
           placeholder="0"
           error={error}
+          value={numberOfGuests}
           handleChange={handleGuestsChange}
         />
       </StyledTipCalculatorLeft>
       <StyledTipCalculatorRight>
-        <ResultDisplay billAmount={billAmount} numberOfGuests={numberOfGuests} />
+        <ResultDisplay 
+          billAmount={billAmount} 
+          numberOfGuests={numberOfGuests} 
+          tipPercentage={tipPercentage}
+          reset={resetState}
+        />
       </StyledTipCalculatorRight>
     </StyledTipCalculator>
   )

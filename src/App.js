@@ -4,6 +4,7 @@ import logo from './assets/images/logo.svg'
 
 function App() {
 
+  // array of clickable tips
   const tipOptions = [5,10,15,25,50]
 
   return (

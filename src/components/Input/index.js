@@ -6,9 +6,13 @@ function Input(props) {
 
   const handleBlur = (e) => {
 
-    const inputValue = e.target.value
+    const inputValue = Number(e.target.value)
 
-    props.handleChange(Number(inputValue).toFixed(2))
+    if(props.decimals) {
+      return props.handleChange(inputValue.toFixed(props.decimals))
+    }
+    
+    props.handleChange(inputValue)
   }
 
   return (
@@ -18,7 +22,8 @@ function Input(props) {
         {props.error && props.error.message.length > 0 && <span className="input__error__message">{props.error.message}</span>}
       </StyledLabel>
       <StyledInput 
-          id={props.id} 
+          id={props.id}
+          decimals={props.decimals} 
           name={props.name} 
           type={props.type} 
           bg={props.icon}
