@@ -23,7 +23,7 @@ function ResultDisplay(props) {
   }, [props.billAmount, props.numberOfGuests, props.tipPercentage])
 
   // Helper variable to save some space
-  const haveData = props.billAmount && props.numberOfGuests > 0
+  const haveData = props.billAmount && props.numberOfGuests > 0 && props.billAmount > 0
 
   return (
       <StyledResultScreen>

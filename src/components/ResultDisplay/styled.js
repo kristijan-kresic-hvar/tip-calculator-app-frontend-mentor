@@ -40,6 +40,9 @@ export const StyledResultScreen = styled.div`
         text-align: right;
         letter-spacing: -1px;
         color: #26C2AE;
+        @media (max-width: 500px) {
+            font-size: 32px;
+        }
     }
 
     .reset {
@@ -65,6 +68,11 @@ export const StyledResultScreen = styled.div`
         color: #00474B;
         text-transform: uppercase;
         cursor: pointer;
+        transition: background-color 200ms ease;
+
+        &:hover {
+            background-color: #9FE8DF;
+        }
     }
 
     .reset button.disabled {

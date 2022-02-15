@@ -7,8 +7,11 @@ function Input(props) {
   const handleBlur = (e) => {
 
     const inputValue = Number(e.target.value)
-
+    
+    console.log(inputValue)
+    
     if(props.decimals) {
+      if(!inputValue > 0) return
       return props.handleChange(inputValue.toFixed(props.decimals))
     }
     

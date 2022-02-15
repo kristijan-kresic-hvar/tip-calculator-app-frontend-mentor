@@ -3,6 +3,7 @@ import styled from '@emotion/styled'
 export const StyledTipCalculator = styled.div`
     width: 100%;
     max-width: 920px;
+    min-width: 360px;
     margin: 0 auto;
     background: #FFFFFF;
     box-shadow: 0px 32px 43px rgba(79, 166, 175, 0.200735);
@@ -19,6 +20,12 @@ export const StyledTipCalculatorLeft = styled.div`
     min-width: 378px;
     margin-right: 50px;
     flex: 1;
+
+    @media (max-width: 500px) {
+        min-width: 0;
+        width: 90%;
+    }
+
     @media (max-width: 920px) {
         margin: 0 auto;
     }
@@ -31,6 +38,11 @@ export const StyledTipCalculatorRight = styled.div`
     min-height: 417px;
     flex: 1;
     position: relative;
+
+    @media (max-width: 500px) {
+        min-height: 327px;
+    }
+
     @media (max-width: 920px) {
         margin-top: 32px;
     }

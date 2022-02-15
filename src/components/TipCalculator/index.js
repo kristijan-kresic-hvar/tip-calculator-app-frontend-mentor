@@ -11,7 +11,7 @@ import iconDollar from '../../assets/images/icon-dollar.svg'
 
 function TipCalculator(props) {
 
-  const [billAmount, setBillAmount] = useState(0)
+  const [billAmount, setBillAmount] = useState("")
   const [tipPercentage, setTipPercentage] = useState("")
   const [numberOfGuests, setNumberOfGuests] = useState("")
   const [error, setError] = useState({
@@ -33,17 +33,17 @@ function TipCalculator(props) {
 
   // function to run when bill input changes
   const handleBillChange = (value) => {
-    setBillAmount(value || 0)
+    setBillAmount(value)
   }
 
   // function to run when number of guests input changes
   const handleGuestsChange = (value) => {
-    setNumberOfGuests(value || 0)
+    setNumberOfGuests(value)
   }
 
   // used for reset button
   const resetState = () => {
-    setBillAmount(0)
+    setBillAmount("")
     setTipPercentage("")
     setNumberOfGuests("")
   }
@@ -55,7 +55,7 @@ function TipCalculator(props) {
           id="bill"
           name="bill"
           icon={iconDollar} 
-          type="number" 
+          type="text" 
           label="Bill"
           decimals={2}
           placeholder="0"
@@ -73,7 +73,7 @@ function TipCalculator(props) {
           id="guests"
           name="guests"
           icon={iconPerson} 
-          type="number" 
+          type="text" 
           label="Number of People" 
           placeholder="0"
           error={error}

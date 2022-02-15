@@ -89,6 +89,11 @@ input[type="number"] {
   }
 }
 
+main {
+  min-width: 360px;
+  margin: 0 auto;
+}
+
 .app__logo {
   display: flex;
   justify-content: center;
