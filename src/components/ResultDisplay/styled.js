@@ -2,6 +2,9 @@ import styled from '@emotion/styled'
 
 export const StyledResultScreen = styled.div`
     padding: 40px;
+    @media (max-width: 500px) {
+        padding: 37px 22px;
+    }
 
     .tip__amount, .total {
         display: flex;
@@ -11,6 +14,9 @@ export const StyledResultScreen = styled.div`
 
     .total {
         margin-top: 41px;
+        @media (max-width: 500px) {
+            margin-top: 18px;
+        }
     }
 
     .tip__amount h2, .total h2 {

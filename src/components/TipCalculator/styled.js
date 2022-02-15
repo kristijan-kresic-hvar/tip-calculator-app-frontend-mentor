@@ -11,6 +11,11 @@ export const StyledTipCalculator = styled.div`
     padding: 32px;
     display: flex;
     align-items: center;
+
+    @media (max-width: 500px) {
+        padding: 32px 24px;
+    }
+
     @media (max-width: 920px) {
         flex-direction: column;
     }
@@ -23,7 +28,7 @@ export const StyledTipCalculatorLeft = styled.div`
 
     @media (max-width: 500px) {
         min-width: 0;
-        width: 90%;
+        width: 100%;
     }
 
     @media (max-width: 920px) {
@@ -40,6 +45,8 @@ export const StyledTipCalculatorRight = styled.div`
     position: relative;
 
     @media (max-width: 500px) {
+        min-width: 0;
+        width: 100%;
         min-height: 327px;
     }
 
