@@ -11,41 +11,17 @@ import iconDollar from '../../assets/images/icon-dollar.svg'
 
 function TipCalculator(props) {
 
-  const [billAmount, setBillAmount] = useState("")
-  const [tipPercentage, setTipPercentage] = useState("")
-  const [numberOfGuests, setNumberOfGuests] = useState("")
-  const [error, setError] = useState({
-      message: ""
-  })
+  const [billAmount, setBillAmount] = useState(0)
+  const [tipPercentage, setTipPercentage] = useState(0)
+  const [numberOfGuests, setNumberOfGuests] = useState(0)
 
   const tips = props.tipOptions?.map(tip => <Tip key={tip} tip={tip} tipPercentage={tipPercentage} setTipPercentage={setTipPercentage} />)
 
-  // check if number of guests input is 0 and if it is set error and its message
-  useEffect(() => {
-
-    if(numberOfGuests !== "" && !Number(numberOfGuests) > 0) {
-      setError({ message: "Can't be zero" })
-    } else {
-      setError({ message: "" })
-    }
-  
-  },[numberOfGuests])
-
-  // function to run when bill input changes
-  const handleBillChange = (value) => {
-    setBillAmount(value)
-  }
-
-  // function to run when number of guests input changes
-  const handleGuestsChange = (value) => {
-    setNumberOfGuests(value)
-  }
-
   // used for reset button
   const resetState = () => {
-    setBillAmount("")
-    setTipPercentage("")
-    setNumberOfGuests("")
+    setBillAmount(0)
+    setTipPercentage(0)
+    setNumberOfGuests(0)
   }
 
   return (
@@ -55,30 +31,38 @@ function TipCalculator(props) {
           id="bill"
           name="bill"
           icon={iconDollar} 
-          type="text" 
+          type="number" 
           label="Bill"
           decimals={2}
           placeholder="0"
-          value={billAmount}
-          handleChange={handleBillChange}
+          value={billAmount === 0 ? " " : billAmount}
+          setState={setBillAmount}
         />
         {tips && <StyledTipContainer>
           <h3>Select Tip %</h3>
           <div className="tips">
             {tips}
-            {props.customTip && <Tip custom={true} value={tipPercentage} tipPercentage={tipPercentage} setTipPercentage={setTipPercentage}/>}
+            {props.customTip && <Tip 
+                                  custom={true}
+                                  type={"number"}
+                                  value={tipPercentage === 0 ? " " : tipPercentage} 
+                                  tipPercentage={tipPercentage} 
+                                  setTipPercentage={setTipPercentage} 
+                                  placeholder="Custom"
+                                />}
           </div>
         </StyledTipContainer>}
         <Input 
           id="guests"
           name="guests"
           icon={iconPerson} 
-          type="text" 
+          type="number" 
           label="Number of People" 
           placeholder="0"
-          error={error}
-          value={numberOfGuests}
-          handleChange={handleGuestsChange}
+          decimals={0}
+          value={numberOfGuests === 0 ? " " : numberOfGuests}
+          setState={setNumberOfGuests}
+          validate={true}
         />
       </StyledTipCalculatorLeft>
       <StyledTipCalculatorRight>
