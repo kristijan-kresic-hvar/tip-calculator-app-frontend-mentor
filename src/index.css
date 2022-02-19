@@ -110,7 +110,7 @@ main {
   color: #e17457;
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 920px) {
   .app__logo {
     padding-top: 50px;
   }
