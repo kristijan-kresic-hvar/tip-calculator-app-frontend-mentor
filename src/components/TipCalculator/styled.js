@@ -72,4 +72,44 @@ export const  StyledTipContainer = styled.div`
         justify-content: space-between;
         margin-left: -10px;
     }
+
+    input::-webkit-input-placeholder {
+        font-family: Space Mono;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 36px;
+        text-align: right;
+        color: #547878;
+    }
+
+    input::-moz-placeholder {
+        font-family: Space Mono;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 36px;
+        text-align: right;
+        color: #547878;
+    }
+
+    input:-ms-input-placeholder {
+        font-family: Space Mono;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 36px;
+        text-align: right;
+        color: #547878;
+    }
+
+    input:-o-input-placeholder {
+        font-family: Space Mono;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 36px;
+        text-align: right;
+        color: #547878;
+    }
 `
